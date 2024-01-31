@@ -22,16 +22,19 @@ num1 = int(input("What's the first number?: "))
 for symbol in operations:
     print(symbol)
 
-operation_symbol = input("pick a operation from the line above: ")
-num2 = int(input("What's the second number?: "))
+Should_Continue = True
 
-calculation = operations[operation_symbol]
-first_answer = calculation(num1,num2)
-print(f"{num1} { operation_symbol }  {num2} = {first_answer}")
+while Should_Continue:
+    operation_symbol = input("pick a operation: ")
+    next_number = int(input("What's the next number?: "))
 
-operation_symbol = input("pick another operation: ")
-num3 = int(input("What's the next number?: "))
-calculation = operations[operation_symbol]
-next_answer = calculation(first_answer,num3)
-print(f"{first_answer} { operation_symbol }  {num3} = {next_answer}")
+    calculation = operations[operation_symbol]
+    answer = calculation(num1,next_number)
+    print(f"{num1} { operation_symbol }  {next_number} = {answer}")
+    
+    if input(f"Type 'y' to continue calculating with the result {answer}, or type 'n' to exit.: ") == 'y':
+        num1 = answer
+    else:
+        Should_Continue = False
+        
 

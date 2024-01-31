@@ -1,3 +1,7 @@
+# A calculator program.
+
+from art import logo 
+
 def sum(a,b):
     return a+b
 
@@ -19,8 +23,8 @@ operations = {
 
 
 def calculator():
-
-    num1 = int(input("What's the first number?: "))
+    print(logo)
+    num1 = float(input("What's the first number?: "))
 
     for symbol in operations:
         print(symbol)
@@ -29,7 +33,7 @@ def calculator():
 
     while Should_Continue:
         operation_symbol = input("pick a operation: ")
-        next_number = int(input("What's the next number?: "))
+        next_number = float(input("What's the next number?: "))
 
         calculation = operations[operation_symbol]
         answer = calculation(num1,next_number)

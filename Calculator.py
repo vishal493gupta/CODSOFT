@@ -1,30 +1,37 @@
 # A calculator program.
+        
+from art import logo
 
-from art import logo 
+def sum(a, b):
+    return a + b
 
-def sum(a,b):
-    return a+b
+def subtract(a, b):
+    return a - b
 
-def subtract(a,b):
-    return a-b
+def multiply(a, b):
+    return a * b
 
-def multiply(a,b):
-    return a*b
+def divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        print("Error: Division by zero!")
+        return None
 
-def divide(a,b):
-    return a/b
-
-operations = { 
-              "+": sum,
-              "-": subtract,
-              "*": multiply,
-              "/": divide 
-              } 
-
+operations = {
+    "+": sum,
+    "-": subtract,
+    "*": multiply,
+    "/": divide
+}
 
 def calculator():
     print(logo)
-    num1 = float(input("What's the first number?: "))
+    try:
+        num1 = float(input("What's the first number?: "))
+    except ValueError:
+        print("Error: Please provide a valid input.")
+        return
 
     for symbol in operations:
         print(symbol)
@@ -33,19 +40,25 @@ def calculator():
 
     while Should_Continue:
         operation_symbol = input("pick a operation: ")
-        next_number = float(input("What's the next number?: "))
+        if operation_symbol not in operations:
+            print("Error: Invalid operation!")
+            return
+        try:
+            next_number = float(input("What's the next number?: "))
+        except ValueError:
+            print("Error: Please provide a valid input.")
+            return
 
         calculation = operations[operation_symbol]
-        answer = calculation(num1,next_number)
-        print(f"{num1} { operation_symbol }  {next_number} = {answer}")
-        
-        if input(f"Type 'y' to continue calculating with the result {answer}, or type 'n' to start a new calculation.: ") == 'y':
-            num1 = answer
-        else:
+        answer = calculation(num1, next_number)
+        if answer is not None:
+            print(f"{num1} {operation_symbol} {next_number} = {answer}")
+
+        if input(f"Type 'y' to continue calculating with the result {answer}, or type 'n' to start a new calculation.: ") != 'y':
             Should_Continue = False
             calculator()
-        
+
 calculator()
-        
+
 
 

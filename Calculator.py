@@ -51,10 +51,13 @@ def calculator():
 
         calculation = operations[operation_symbol]
         answer = calculation(num1, next_number)
+        
         if answer is not None:
             print(f"{num1} {operation_symbol} {next_number} = {answer}")
+            num1 = answer
 
-        if input(f"Type 'y' to continue calculating with the result {answer}, or type 'n' to start a new calculation.: ") != 'y':
+            
+        if input(f"Type 'y' to continue calculating with the result {answer}, or type 'n' or press any other key to start a new calculation.: ") != 'y':
             Should_Continue = False
             calculator()
 

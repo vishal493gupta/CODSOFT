@@ -1,6 +1,6 @@
 # A calculator program.
         
-from art import logo
+from calc_art import logo
 
 def sum(a, b):
     return a + b

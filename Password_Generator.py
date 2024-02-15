@@ -14,15 +14,16 @@ let = int(input("How many letters would you like in your password?: "))
 sym = int(input("How many symbols would you like?: "))
 num = int(input("How many numbers would you like?: "))
 
+    
+password = ""
+    
 for i in range(let):
-    print(random.choice(letters), end="")
+    password += random.choice(letters)   
     
 for j in range(sym):
-    print(random.choice(symbols), end="")
-
+    password += random.choice(symbols)
+   
 for k in range(num):
-    print(random.choice(numbers), end="")
-    
-
-    
-#print("Here is your password: ", password)
+    password += random.choice(numbers)    
+        
+print("Here is your password: ", password)

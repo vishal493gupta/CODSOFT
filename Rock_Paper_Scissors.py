@@ -5,6 +5,7 @@
 2. Scissors win against paper.
 3. Papers wins against rock.'''
 
+from rps_game_art import logo
 import random
 
 Rock="✊"
@@ -17,6 +18,7 @@ computer_score = 0
 map=['Rock', 'Paper','Scissors']
 
 while True:
+    print(logo)
     comp_choose=random.choice(map).lower()
     you_choose=input("What would you like to choose ? Type Rock, Paper or Scissors : ").capitalize()
 
